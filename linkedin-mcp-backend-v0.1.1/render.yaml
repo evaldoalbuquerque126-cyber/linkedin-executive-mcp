@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: linkedin-executive-mcp
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: LINKEDIN_CLIENT_ID
+        sync: false
+      - key: LINKEDIN_CLIENT_SECRET
+        sync: false
+      - key: LINKEDIN_REDIRECT_URI
+        sync: false
+      - key: LINKEDIN_SCOPES
+        value: openid profile email w_member_social
+      - key: LINKEDIN_VERSION
+        value: 202609
+      - key: APP_SECRET
+        generateValue: true
+      - key: FERNET_KEY
+        sync: false
+      - key: DATA_PATH
+        value: /tmp/linkedin.sqlite3
